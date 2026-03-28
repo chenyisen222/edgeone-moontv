@@ -74,6 +74,18 @@
       "api": "https://wwzy.tv/api.php/provide/vod",
       "name": "旺旺短剧"
     },
+    "zuidazy": {
+      "api": "https://zuidazy.me/api.php/provide/vod/",
+      "name": "zuidazy"
+    },
+    "nxflv": {
+      "api": "https://slapibf.com/api.php/provide/vod/",
+      "name": "nxflv"
+    },
+    "森林": {
+      "api": "http://caiji.nxflv.com/api.php/provide/vod/",
+      "name": "森林"
+    },
     "ikun": {
       "api": "https://ikunzyapi.com/api.php/provide/vod",
       "name": "iKun资源"

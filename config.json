@@ -97,11 +97,6 @@
     "xiaomaomi": {
       "api": "https://zy.xmm.hk/api.php/provide/vod",
       "name": "小猫咪资源"
-    },
-    {
-  "douban_proxy": "https://your-proxy.example.com/fetch?url=",
-  "downstream_proxy": "https://your-proxy.example.com/fetch?url=",
-  "image_proxy": "https://your-proxy.example.com/image?url="
-}
+    }
   }
 }

@@ -102,10 +102,96 @@
       "api": "https://cj.lziapi.com/api.php/provide/vod",
       "name": "量子资源"
     }
-{
-"douban_proxy": "https://corsproxy.io/?",
-"downstream_proxy": "https://allorigins.win/raw?url=",
-"image_proxy": "https://images.weserv.nl/?url="
+// 增加超时控制和错误重试机制
+async function fetchDoubanData(url) {
+  const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+  try {
+    const response = await Promise.race([
+      fetch(proxyUrl),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('请求超时')), 8000))
+    ]);
+    if (!response.ok) throw new Error(`HTTP错误 ${response.status}`);
+    return await response.text();
+  } catch (error) {
+    console.error('代理请求失败:', error);
+    // 重试逻辑（最多2次）
+    if (error.message.includes('超时') && retryCount < 2) {
+      return fetchDoubanData(url, retryCount + 1);
+    }
+    // 降级方案：使用备用代理
+    return fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  }
 }
+
+// 使用示例
+fetchDoubanData('https://book.douban.com/subject/1084336/')
+  .then(data => console.log(data.slice(0, 500)))
+  .catch(e => console.error('最终失败:', e));
+
+// 增加内容类型检测和自动JSON解析
+async function fetchAnyOrigin(url) {
+  const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+  
+  try {
+    const response = await fetch(proxyUrl);
+    const contentType = response.headers.get('content-type');
+    
+    if (contentType?.includes('application/json')) {
+      return await response.json();
+    } else {
+      return await response.text();
+    }
+  } catch (error) {
+    console.error('代理服务异常:', error);
+    // 使用本地代理服务作为备用方案
+    return fetch(`http://localhost:3000/proxy?url=${encodeURIComponent(url)}`);
+  }
+}
+
+// 使用示例
+fetchAnyOrigin('https://api.github.com/users/octocat')
+  .then(data => console.log(data.login))
+  .catch(e => console.error('最终失败:', e));
+
+<!-- 增加懒加载和错误处理 -->
+<img 
+  src="https://images.weserv.nl/?url=example.com/image.jpg&w=300&h=300&fit=cover"
+  alt="示例图片"
+  loading="lazy"
+  onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=加载失败'"
+>
+
+<script>
+  // 动态加载图片函数
+  function loadImage(url, options = {}) {
+    const { width, height, fit = 'cover' } = options;
+    const proxyUrl = new URL(`https://images.weserv.nl/`);
+    
+    proxyUrl.searchParams.append('url', url);
+    proxyUrl.searchParams.append('w', width);
+    proxyUrl.searchParams.append('h', height);
+    proxyUrl.searchParams.append('fit', fit);
+    
+    const img = new Image();
+    img.src = proxyUrl.toString();
+    img.onload = () => console.log('图片加载成功');
+    img.onerror = () => {
+      console.error('图片加载失败');
+      img.src = 'https://via.placeholder.com/300x300?text=加载失败';
+    };
+    
+    return img;
+  }
+
+  // 使用示例
+  document.body.appendChild(
+    loadImage('https://example.com/original.jpg', {
+      width: 800,
+      height: 600,
+      fit: 'contain'
+    })
+  );
+</script>
+
   }
 }

@@ -16,6 +16,10 @@
       "api": "http://cj.rycjapi.com/api.php/provide/vod",
       "name": "如意资源"
     },
+    "金鹰": {
+      "api": "https://jyzyapi.com/provide/vod",
+      "name": "金鹰资源"
+    },
     "bfzy": {
       "api": "https://bfzyapi.com/api.php/provide/vod",
       "name": "暴风资源"
@@ -82,21 +86,21 @@
       "api": "https://slapibf.com/api.php/provide/vod/",
       "name": "nxflv"
     },
-    "森林": {
-      "api": "http://caiji.nxflv.com/api.php/provide/vod/",
-      "name": "森林"
-    },
     "ikun": {
       "api": "https://ikunzyapi.com/api.php/provide/vod",
       "name": "iKun资源"
     },
-    "lzi": {
-      "api": "https://cj.lziapi.com/api.php/provide/vod",
-      "name": "量子资源站"
+    "百度云": {
+      "api": "https://api.apibdzy.com/api.php/provide/vod/",
+      "name": "百度云资源"
     },
-    "xiaomaomi": {
-      "api": "https://zy.xmm.hk/api.php/provide/vod",
-      "name": "小猫咪资源"
+     "红牛": {
+      "api": "https://www.hongniuzy2.com/api.php/provide/vod",
+      "name": "红牛资源"
+    },
+     "量子": {
+      "api": "https://cj.lziapi.com/api.php/provide/vod",
+      "name": "量子资源"
     }
   }
 }

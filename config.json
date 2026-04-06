@@ -1,7 +1,7 @@
 {
-  "douban_proxy": "https://raspy-wildflower-b35c.k-68b.workers.dev/fetch?url=",
-  "downstream_proxy": "https://raspy-wildflower-b35c.k-68b.workers.dev/fetch?url=",
-  "image_proxy": "https://raspy-wildflower-b35c.k-68b.workers.dev/image?url="
+  "douban_proxy": "https://raspy-wildflower-b35c.k-68b.workers.dev/fetch?url=https://movie.douban.com/",
+  "downstream_proxy": "https://raspy-wildflower-b35c.k-68b.workers.dev/fetch?url=https://movie.douban.com/",
+  "image_proxy": "https://raspy-wildflower-b35c.k-68b.workers.dev/image?url=https://movie.douban.com/"
 }
 ｛
   "homepage_password": "likemoive212",

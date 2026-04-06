@@ -102,14 +102,10 @@
       "api": "https://cj.lziapi.com/api.php/provide/vod",
       "name": "量子资源"
     }
- {
-
-"douban_proxy": "https://api.codetabs.com/v1/proxy?quest=",
-
-"downstream_proxy": "https://api.allorigins.win/get?url=",
-
+{
+"douban_proxy": "https://corsproxy.io/?",
+"downstream_proxy": "https://allorigins.win/raw?url=",
 "image_proxy": "https://images.weserv.nl/?url="
-
 }
   }
 }
